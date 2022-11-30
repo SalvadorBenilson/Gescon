@@ -13,8 +13,20 @@ class Residente extends Model
     protected $fillable = [
         'nome',
         'residencia_id',
-        'usuario_id',
+        'user_id',
     ];
 
     protected $guarded = ['id'];
+
+    //Relacionamento via Model do User que cadastrou o Residente
+    public function user()
+    {
+        return $this->hasMany(User::class,'user_id','id');
+    }
+
+    //Relacionamento via Model do Residencia que cadastrou o Residente
+    public function residencia()
+    {
+        return $this->hasMany(Residencia::class,'residencia_id','id');
+    }
 }

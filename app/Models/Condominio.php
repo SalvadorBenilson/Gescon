@@ -16,8 +16,14 @@ class Condominio extends Model
         'municipio',
         'bairro',
         'descrisao',
-        'usuario_id',
+        'user_id',
     ];
 
     protected $guarded = ['id'];
+
+    //Relacionamento via Model do User que cadastrou o Condominio
+    public function user()
+    {
+        return $this->hasMany(User::class,'user_id','id');
+    }
 }

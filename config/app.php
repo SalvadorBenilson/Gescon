@@ -2,6 +2,17 @@
 
 use Illuminate\Support\Facades\Facade;
 
+/*
+Route::get('/greeting/{locale}', function ($locale) {
+    if(! in_array($locale, ['en', 'pt'])){
+        abort(400);
+    }
+
+});
+
+App::setLocate($locale);
+*/
+
 return [
 
     /*
