@@ -14,13 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('condominio', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
             $table->string('nome', 50);
             $table->string('provincia', 15);
             $table->string('municipio', 30);
             $table->string('bairro', 30);
-            $table->text('descrisao')->nullable()->default('Endereço do Condomio por Extenço');
-            $table->unsignedBigInteger('usuario_id');
+            $table->text('descrisao')->nullable()->default('Endereço do Condomio por Extenco');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
