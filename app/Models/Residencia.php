@@ -13,7 +13,9 @@ class Residencia extends Model
     protected $fillable = [
         'bloco',
         'predio',
-        'condominio',
+        'condominio_id',
         'usuario_id',
     ];
+
+    protected $guarded = ['id'];
 }

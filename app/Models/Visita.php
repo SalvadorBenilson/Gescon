@@ -11,13 +11,13 @@ class Visita extends Model
     protected $table = 'visita';
 
     protected $fillable = [
-        'condominio',
-        'portaria',
-        'residencia',
         'nome',
         'autorizado',
         'data_entrada',
         'data_saida',
+        'residencia_id',
         'usuario_id',
     ];
+
+    protected $guarded = ['id'];
 }

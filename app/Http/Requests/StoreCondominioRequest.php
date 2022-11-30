@@ -13,7 +13,7 @@ class StoreCondominioRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreCondominioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required|string|max:50|unique:nome',
+            'provincia' => 'required|string|max:15',
+            'municipio' => 'required|string|max:30',
+            'bairro' => 'required|string|max:30',
+            'descrisao' => 'text',
+            'usuario_id' => 'required|int',
         ];
     }
 }

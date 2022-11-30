@@ -16,7 +16,11 @@ return new class extends Migration
         Schema::create('condominio', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50);
-            $table->string('endereco', 255);
+            $table->string('provincia', 15);
+            $table->string('municipio', 30);
+            $table->string('bairro', 30);
+            $table->text('descrisao')->nullable()->default('Endereço do Condomio por Extenço');
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
         });
     }

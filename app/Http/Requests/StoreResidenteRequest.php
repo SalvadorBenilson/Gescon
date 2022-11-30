@@ -24,7 +24,9 @@ class StoreResidenteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required|string|max:255',
+            'residencia_id' => 'required|int',
+            'usuario_id' => 'required|int',
         ];
     }
 }

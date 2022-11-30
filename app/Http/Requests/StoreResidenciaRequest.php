@@ -25,6 +25,10 @@ class StoreResidenciaRequest extends FormRequest
     {
         return [
             //
+            'bloco' => 'required|string|max:5',
+            'predio' => 'required|string|max:5',
+            'condominio_id' => 'required|int',
+            'usuario_id' => 'required|int',
         ];
     }
 }

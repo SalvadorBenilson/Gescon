@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('bloco', 5);
             $table->string('predio', 5);
+            $table->unsignedBigInteger('condominio_id');
+            $table->unsignedBigInteger('portaria_id');
             $table->timestamps();
         });
     }

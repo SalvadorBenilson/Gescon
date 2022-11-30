@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('residente', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 255);
+            $table->unsignedBigInteger('residencia_id');
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
         });
     }

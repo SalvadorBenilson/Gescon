@@ -3,6 +3,11 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\http\Controllers\CondominioController;
+use App\http\Controllers\PortariaController;
+use App\Http\Controllers\ResidenciaController;
+use App\Http\Controllers\ResidenteController;
+use App\Http\Controllers\VisitaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +36,15 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-    })->name('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 });
+Route::resource('condominio', CondominioController::class);
+Route::resource('portaria', PortariaController::class);
+Route::resource('residencia', ResidenciaController::class);
+Route::resource('residente', ResidenteController::class);
+Route::resource('visita', VisitaController::class);
 
-Route::inertia('/about', 'folder/AboutComponent');
+
+
 
 

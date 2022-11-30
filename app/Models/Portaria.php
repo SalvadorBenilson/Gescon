@@ -15,4 +15,6 @@ class Portaria extends Model
         'condominio',
         'usuario_id',
     ];
+
+    protected $guarded = ['id'];
 }

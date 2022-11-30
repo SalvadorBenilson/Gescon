@@ -24,7 +24,9 @@ class StorePortariaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'numero' => 'required|int',
+            'condominio_id' => 'required|int',
+            'usuario_id' => 'required|int',
         ];
     }
 }

@@ -11,10 +11,10 @@ class Residente extends Model
     protected $table = 'residente';
 
     protected $fillable = [
-        'condominio',
-        'portaria',
-        'residencia',
         'nome',
+        'residencia_id',
         'usuario_id',
     ];
+
+    protected $guarded = ['id'];
 }

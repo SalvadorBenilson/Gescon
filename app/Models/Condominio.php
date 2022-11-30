@@ -12,7 +12,12 @@ class Condominio extends Model
 
     protected $fillable = [
         'nome',
-        'endereco',
+        'provincia',
+        'municipio',
+        'bairro',
+        'descrisao',
         'usuario_id',
     ];
+
+    protected $guarded = ['id'];
 }

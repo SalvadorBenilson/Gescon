@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Condominio;
 use App\Http\Requests\StoreCondominioRequest;
 use App\Http\Requests\UpdateCondominioRequest;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class CondominioController extends Controller
 {
@@ -16,6 +18,9 @@ class CondominioController extends Controller
     public function index()
     {
         //
+        $usuario = Auth::user()->id;
+        $condominios = Condominio::where('usuario_id', 'like', '%'.$usuario.'%');
+        return Inertia::render('Condominio/Show', ['condominios' => $condominios]);
     }
 
     /**
@@ -26,6 +31,7 @@ class CondominioController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Condominio/create');
     }
 
     /**
@@ -37,6 +43,9 @@ class CondominioController extends Controller
     public function store(StoreCondominioRequest $request)
     {
         //
+        Condominio::create($request->all());
+        sleep(1);
+        return redirect()->route('condominio.show')->with('message', 'Perfil de condominio criado com sucesso');
     }
 
     /**
@@ -59,6 +68,7 @@ class CondominioController extends Controller
     public function edit(Condominio $condominio)
     {
         //
+        return Inertia::render('Condominio/Edit', ['condominio' => $condominio]);
     }
 
     /**
@@ -71,6 +81,12 @@ class CondominioController extends Controller
     public function update(UpdateCondominioRequest $request, Condominio $condominio)
     {
         //
+        $request->validate();
+        $condominio->nome = $request->nome;
+        $condominio->endereco = $request->endereco;
+        $condominio->save();
+        sleep(1);
+        return redirect()->route('condominio.show')->with('message', 'Perfil de condominio actualizado com sucesso');
     }
 
     /**
@@ -82,5 +98,8 @@ class CondominioController extends Controller
     public function destroy(Condominio $condominio)
     {
         //
+        $condominio->delete();
+        sleep(1);
+        return redirect()->route('condominio.show')->with('message', 'Perfil de condominio apagado com sucesso');
     }
 }

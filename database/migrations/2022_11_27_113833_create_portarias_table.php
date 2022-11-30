@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('portaria', function (Blueprint $table) {
             $table->id();
             $table->int('numero');
+            $table->unsignedBigInteger('condominio_id');
             $table->timestamps();
         });
     }

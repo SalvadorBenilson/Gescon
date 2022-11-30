@@ -24,7 +24,11 @@ class UpdateVisitaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'autorizado' => 'required|boolean',
+            'data_entrada' => 'required|date',
+            'data_saida' => 'required|date',
+            'residencia_id' => 'required|int',
+            'usuario_id' => 'required|int',
         ];
     }
 }

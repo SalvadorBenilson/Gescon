@@ -19,6 +19,8 @@ return new class extends Migration
             $table->boolean('autorizado')->nullable()->default(false);
             $table->date('data_entrada')->nullable()->default(new DateTime());
             $table->date('data_saida')->nullable()->default(new DateTime());
+            $table->unsignedBigInteger('residencia_id');
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
         });
     }

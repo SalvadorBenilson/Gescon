@@ -24,7 +24,12 @@ class UpdateCondominioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required|string|max:50',
+            'provincia' => 'required|string|max:15',
+            'municipio' => 'required|string|max:30',
+            'bairro' => 'required|string|max:30',
+            'descrisao' => 'text',
+            'usuario_id' => 'required|int',
         ];
     }
 }
