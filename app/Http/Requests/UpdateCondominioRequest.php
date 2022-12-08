@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Condominio;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCondominioRequest extends FormRequest
@@ -13,7 +15,7 @@ class UpdateCondominioRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

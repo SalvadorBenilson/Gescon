@@ -38,11 +38,26 @@ Route::middleware([
     return Inertia::render('Dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 });
-Route::resource('condominio', CondominioController::class);
-Route::resource('portaria', PortariaController::class);
-Route::resource('residencia', ResidenciaController::class);
-Route::resource('residente', ResidenteController::class);
-Route::resource('visita', VisitaController::class);
+
+Route::resource('condominio', CondominioController::class)
+->only(['index', 'store', 'update', 'destroy'])
+->middleware(['auth', 'verified']);
+
+Route::resource('portaria', PortariaController::class)
+->only(['index', 'store', 'update', 'destroy'])
+->middleware(['auth', 'verified']);
+
+Route::resource('residencia', ResidenciaController::class)
+->only(['index', 'store', 'update', 'destroy'])
+->middleware(['auth', 'verified']);
+
+Route::resource('residente', ResidenteController::class)
+->only(['index', 'store', 'update', 'destroy'])
+->middleware(['auth', 'verified']);
+
+Route::resource('visita', VisitaController::class)
+->only(['index', 'store', 'update', 'destroy'])
+->middleware(['auth', 'verified']);
 
 
 

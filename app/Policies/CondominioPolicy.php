@@ -54,6 +54,7 @@ class CondominioPolicy
     public function update(User $user, Condominio $condominio)
     {
         //
+        return $condominio->user->is($user);
     }
 
     /**
@@ -66,6 +67,7 @@ class CondominioPolicy
     public function delete(User $user, Condominio $condominio)
     {
         //
+        return $this->update($user, $condominio);
     }
 
     /**

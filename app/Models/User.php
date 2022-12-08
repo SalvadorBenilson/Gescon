@@ -58,4 +58,28 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function condominio()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function portaria()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function residencia()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function residente()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function visita()
+    {
+        return $this->belongsTo(User::class);
+    }  
 }

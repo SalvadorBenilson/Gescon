@@ -19,10 +19,8 @@ return new class extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
             $table->string('nome', 255);
-            $table->unsignedBigInteger('residencia_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('residencia_id')->references('id')->on('residencia');
+            $table->foreignId('users_id');
+            $table->foreignId('residencia_id');
             $table->timestamps();
         });
     }

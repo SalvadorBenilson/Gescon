@@ -18,11 +18,9 @@ return new class extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
-            $table->int('numero');
-            $table->unsignedBigInteger('condominio_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('condominio_id')->references('id')->on('condominio');
+            $table->integer('numero');
+            $table->foreignId('users_id');
+            $table->foreignId('condominio_id');           
             $table->timestamps();
         });
     }

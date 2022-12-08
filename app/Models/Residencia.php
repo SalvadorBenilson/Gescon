@@ -22,12 +22,22 @@ class Residencia extends Model
     //Relacionamento via Model do User que cadastrou a Residencia
     public function user()
     {
-        return $this->hasMany(User::class,'user_id','id');
+        return $this->hasMany(User::class);
     }
 
     //Relacionamento via Model do User que cadastrou a Residencia
     public function condominio()
     {
-        return $this->hasMany(Condominio::class,'condominio_id','id');
+        return $this->hasMany(Condominio::class);
+    }
+
+    public function residente()
+    {
+        return $this->belongsTo(Residente::class);
+    }
+
+    public function visita()
+    {
+        return $this->belongsTo(Residente::class);
     }
 }

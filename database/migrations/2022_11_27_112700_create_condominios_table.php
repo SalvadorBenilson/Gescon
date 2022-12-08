@@ -23,8 +23,7 @@ return new class extends Migration
             $table->string('municipio', 30);
             $table->string('bairro', 30);
             $table->text('descrisao')->nullable()->default('Endereço do Condomio por Extenco');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('users_id');
             $table->timestamps();
         });
     }

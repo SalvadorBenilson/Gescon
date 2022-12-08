@@ -20,12 +20,9 @@ return new class extends Migration
             $table->id();
             $table->string('bloco', 5);
             $table->string('predio', 5);
-            $table->unsignedBigInteger('condominio_id');
-            $table->unsignedBigInteger('portaria_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('portaria_id')->references('id')->on('portaria');
-            $table->foreign('condominio_id')->references('id')->on('condominio');
+            $table->foreignId('users_id');
+            $table->foreignId('portaria_id');
+            $table->foreignId('condominio_id');
             $table->timestamps();
         });
     }

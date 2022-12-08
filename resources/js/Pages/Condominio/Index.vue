@@ -1,10 +1,4 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import { Head } from '@inertiajs/inertia-vue3';
-import { PrimaryButton } from '@Components/PrimaryButton.vue';
-import { Link } from '@inertiajs/inertia-vue3';
-import { Inertia } from '@inertiajs/inertia';
-import { useForm } from '@inetiajs/inetia-vue3';
 
 const props = defineProps({
     condominios: {
@@ -12,13 +6,17 @@ const props = defineProps({
         default: () => ({}),
     },
 });
-const form = useForm();
+
+const form = useForm({
+
+});
 
 function destroy(id) {
     if(confirm("Tem certeza que quer apagar?")) {
         form.delete(route('condominio.destoy', id));
     }
 }
+
 </script>
 
 <template>
@@ -51,8 +49,7 @@ function destroy(id) {
                             </Link>
                         </div>
                          <div
-                            class="relative overflow-x-auto shadow-md sm:rounded-lg"
-                        >
+                            class="relative overflow-x-auto shadow-md sm:rounded-lg">
                             <table
                                 class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
                             >
@@ -65,9 +62,6 @@ function destroy(id) {
                                             Nome
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Endereço
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
                                             Editar
                                         </th>
                                         <th scope="col" class="px-6 py-3">
@@ -78,7 +72,7 @@ function destroy(id) {
                                 <tbody>
                                     <tr
                                         v-for="condominio in condominios"
-                                        :key="blog.id"
+                                        :key="condominios.id"
                                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                                     >
                                         <th
@@ -93,10 +87,6 @@ function destroy(id) {
                                         >
                                             {{ condominio.nome }}
                                         </th>
-                                        <td class="px-6 py-4">
-                                            {{ condominio.endereco }}
-                                        </td>
-
 
                                         <td class="px-6 py-4">
                                             <Link

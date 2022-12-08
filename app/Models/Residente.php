@@ -21,12 +21,12 @@ class Residente extends Model
     //Relacionamento via Model do User que cadastrou o Residente
     public function user()
     {
-        return $this->hasMany(User::class,'user_id','id');
+        return $this->hasMany(User::class);
     }
 
     //Relacionamento via Model do Residencia que cadastrou o Residente
     public function residencia()
     {
-        return $this->hasMany(Residencia::class,'residencia_id','id');
+        return $this->hasMany(Residencia::class);
     }
 }

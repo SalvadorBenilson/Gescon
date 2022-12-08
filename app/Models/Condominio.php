@@ -24,6 +24,11 @@ class Condominio extends Model
     //Relacionamento via Model do User que cadastrou o Condominio
     public function user()
     {
-        return $this->hasMany(User::class,'user_id','id');
+        return $this->hasMany(User::class);
+    }
+
+    public function residencia()
+    {
+        return $this->belongsTo(User::class);
     }
 }
