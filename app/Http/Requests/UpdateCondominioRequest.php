@@ -30,7 +30,7 @@ class UpdateCondominioRequest extends FormRequest
             'provincia' => 'required|string|max:15',
             'municipio' => 'required|string|max:30',
             'bairro' => 'required|string|max:30',
-            'descrisao' => 'text',
+            'descrisao' => 'string',
             'usuario_id' => 'required|int',
         ];
     }

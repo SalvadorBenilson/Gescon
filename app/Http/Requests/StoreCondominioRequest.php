@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreCondominioRequest extends FormRequest
 {
@@ -23,13 +24,14 @@ class StoreCondominioRequest extends FormRequest
      */
     public function rules()
     {
+        $usuario = Auth::user()->id;
         return [
-            'nome' => 'required|string|max:50|unique:nome',
+            'nome' => 'required|string|max:50',
             'provincia' => 'required|string|max:15',
             'municipio' => 'required|string|max:30',
             'bairro' => 'required|string|max:30',
-            'descrisao' => 'text',
-            'usuario_id' => 'required|int',
+            'descrisao' => 'string',
+            'users_id' =>  $usuario,
         ];
     }
 }

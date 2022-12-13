@@ -6,7 +6,7 @@ use App\Models\Condominio;
 use App\Http\Requests\StoreCondominioRequest;
 use App\Http\Requests\UpdateCondominioRequest;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Auth;
+
 
 class CondominioController extends Controller
 {
@@ -18,12 +18,12 @@ class CondominioController extends Controller
     public function index()
     {
         //
-        $usuario = Auth::user()->id;
-        $condominios = Condominio::where('usuario_id', 'like', '%'.$usuario.'%')
-        ->with('user:id,name')
-        ->lastet
-        ->get();
-        return Inertia::render('Condominio/Index', ['condominios' => $condominios]);
+        //$usuario = Auth::user()->id;
+        //where('usuario_id', 'like', '%'.$usuario.'%')
+
+        return Inertia::render('Condominio/Index', [
+            'condominio' => Condominio::with('user:id,name')->latest()->get(),            
+        ]);
     }
 
     /**
@@ -34,6 +34,7 @@ class CondominioController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Condominio/Create');
     }
 
     /**
@@ -45,7 +46,8 @@ class CondominioController extends Controller
     public function store(StoreCondominioRequest $request)
     {
         //
-        Condominio::create($request->all());
+        $validated = $request->validate();
+        $request->user()->condominio->create($validated);
         return redirect()->route('condominio.index')->with('message', 'Perfil de condominio criado com sucesso');
     }
 

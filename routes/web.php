@@ -40,7 +40,7 @@ Route::middleware([
 });
 
 Route::resource('condominio', CondominioController::class)
-->only(['index', 'store', 'update', 'destroy'])
+->only(['index', 'create', 'store', 'update', 'edit/{id}', 'destroy'])
 ->middleware(['auth', 'verified']);
 
 Route::resource('portaria', PortariaController::class)
